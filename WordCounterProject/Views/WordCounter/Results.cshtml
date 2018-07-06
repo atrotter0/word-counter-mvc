@@ -10,8 +10,17 @@
     }
 }
 
-<div class='well results'>
-    <p><span class='bold-word'>Word:</span> @Model.GetUserWord()
-    <p><span class='bold-word'>Phrase:</span> @Model.GetUserPhrase()
-    <p>Your word <span class='bold-word'>@Model.GetUserWord()</span> appeared @Model.GetWordCount() @result in the given phrase.</p>
-</div>
+@if (Model.GetAnyErrors())
+{
+    <div class='well results'>
+        <p>@Model.GetError()</p>
+    </div>
+}
+else
+{
+    <div class='well results'>
+        <p><span class='bold-word'>Word:</span> @Model.GetUserWord()
+        <p><span class='bold-word'>Phrase:</span> @Model.GetUserPhrase()
+        <p>Your word <span class='bold-word'>@Model.GetUserWord()</span> appeared @Model.GetWordCount() @result in the given phrase.</p>
+    </div>
+}

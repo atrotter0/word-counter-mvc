@@ -190,5 +190,13 @@ namespace WordCounterProject.Tests
             newCounter.RunWordCount();
             Assert.AreEqual(0, newCounter.GetWordCount());
         }
+
+        [TestMethod]
+        public void GetSetAnyErrors_GetsSetsAnyErrors_True()
+        {
+            WordCounter newCounter = new WordCounter();
+            newCounter.SetAnyErrors(true);
+            Assert.AreEqual(true, newCounter.GetAnyErrors());
+        }
     }
 }

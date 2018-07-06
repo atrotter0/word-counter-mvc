@@ -9,7 +9,8 @@ namespace WordCounterProject.Models
         private string _userPhrase;
         private string _scrubbedPhrase;
         private int _wordCount;
-        private string _error;
+        private string _errorMsg = "Invalid word or phrase. Please enter a new word and try again.";
+        private bool _anyErrors = false;
 
         public WordCounter(string word, string phrase)
         {
@@ -135,19 +136,29 @@ namespace WordCounterProject.Models
 
         public void SetError(string error)
         {
-            _error = error;
+            _errorMsg = error;
         }
 
         public string GetError()
         {
-            return _error;
+            return _errorMsg;
+        }
+
+        public void SetAnyErrors(bool input)
+        {
+            _anyErrors = input;
+        }
+
+        public bool GetAnyErrors()
+        {
+            return _anyErrors;
         }
 
         public void RunWordCount()
         {
             if (this.InvalidWordOrPhrase())
             {
-                this.SetError("Invalid word. Please enter a new word and try again.");
+                this.SetAnyErrors(true);
             }
             else
             {
