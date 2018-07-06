@@ -6,7 +6,7 @@
 
 ## Description
 
-A .NET web app utilizing the MVC paradigm. Allows a user to enter a word and a phrase. The phrase will be searched for the word entered and display how many times that word occurred within the phrase.
+A .NET web app utilizing the MVC paradigm. Allows a user to enter a word and a phrase. The phrase will be searched for the word and display how many times that word occurred within the phrase.
 
 ## Specs
 
@@ -41,6 +41,7 @@ A .NET web app utilizing the MVC paradigm. Allows a user to enter a word and a p
 * .Net Core 1.1.4
 * JavaScript
 * jQuery 3.3.1
+* AJAX
 * Bootstrap 3.3.7
 
 ## Links
