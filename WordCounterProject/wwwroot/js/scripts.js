@@ -52,29 +52,34 @@ function getWordCount(word, phrase) {
     data: { word: word, phrase: phrase},
     url: '/word-counter/' + word + '/' + phrase + '/',
     success: function(result) {
-      displayResult('.jumbotron', '.container', result);
+      displayMatches(result);
     },
     error: function(err) {
-      console.log("Error, not working: " + JSON.stringify(err));
+      console.log("Error: " + JSON.stringify(err));
     }
   });
 }
 
-function displayResult(removeElement, appendTo, result) {
-  $(removeElement).remove();
-  $(appendTo).append(result);
+function displayMatches(result) {
+  $('.jumbotron').append(result);
+}
+
+function removeResults() {
+  $('.results').remove();
 }
 
 $(document).ready(function() {
   disableBtn('#count-word');
 
   $('#word-input').keyup(function() {
+    removeResults();
     onlyLetters(this);
     checkFormFields();
     checkInputFlags();
   });
 
   $('#phrase-input').keyup(function() {
+    removeResults();
     checkFormFields();
     checkInputFlags();
   });
