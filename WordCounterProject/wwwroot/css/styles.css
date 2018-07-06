@@ -4,3 +4,14 @@
   border-radius: 10px;
   box-shadow: 5px 5px 10px #444;
 }
+
+.error-message {
+  visibility: hidden;
+  color: red;
+  margin: 10px auto;
+  height: 30px;
+}
+
+.form-group {
+  margin: 30px auto;
+}
