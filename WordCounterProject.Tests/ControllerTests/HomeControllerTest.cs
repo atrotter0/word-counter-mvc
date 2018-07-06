@@ -17,5 +17,13 @@ namespace WordCounterProject.Tests
             ActionResult Index = controller.Index();
             Assert.IsInstanceOfType(Index, typeof(ViewResult));
         }
+
+        [TestMethod]
+        public void Contact_ReturnsCorrectView_True()
+        {
+            HomeController controller = new HomeController();
+            ActionResult Contact = controller.Contact();
+            Assert.IsInstanceOfType(Contact, typeof(ViewResult));
+        }
     }
 }
