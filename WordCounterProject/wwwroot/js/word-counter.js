@@ -1,14 +1,14 @@
 var notBlank = false;
-var fieldValid = false;
+var fieldsValid = false;
 
 function onlyLetters(element) {
   if ($(element).val().match(/[^a-zA-Z]/)) {
     var msg = '* Only letters are allowed.';
     displayInputError(element, msg);
-    fieldValid = false;
+    fieldsValid = false;
   } else {
     resetInputError(element);
-    fieldValid = true;
+    fieldsValid = true;
   }
 }
 
@@ -23,15 +23,19 @@ function resetInputError(element) {
 }
 
 function checkFormFields() {
-  if ($('#word-input').val() !== "" && $('#phrase-input').val() !== "") {
+  if (emptyInput('#word-input') && emptyInput('#phrase-input')) {
     notBlank = true;
   } else {
     notBlank = false;
   }
 }
 
+function emptyInput(element) {
+  return $(element).val() !== "";
+}
+
 function checkInputFlags() {
-  if (notBlank && fieldValid) {
+  if (notBlank && fieldsValid) {
     enableBtn('#count-word');
   } else {
     disableBtn('#count-word');

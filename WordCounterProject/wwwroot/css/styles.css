@@ -1,8 +1,12 @@
-.word-count-hero {
+.hero-image {
   display: block;
   margin: 40px auto;
   border-radius: 10px;
   box-shadow: 5px 5px 10px #444;
+}
+
+.no-box-shadow {
+  box-shadow: none;
 }
 
 .error-display {

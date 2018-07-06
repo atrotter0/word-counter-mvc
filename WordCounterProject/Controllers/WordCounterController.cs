@@ -17,7 +17,6 @@ namespace WordCounterProject.Controllers
         {
             WordCounter wordCount = new WordCounter(word, phrase);
             wordCount.RunWordCount();
-            Console.WriteLine(wordCount.GetWordCount());
             return View("Results", wordCount);
         }
     }

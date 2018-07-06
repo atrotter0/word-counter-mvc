@@ -10,5 +10,11 @@ namespace WordCounterProject.Controllers
         {
             return View();
         }
+
+        [HttpGet("/contact")]
+        public ActionResult Contact()
+        {
+            return View();
+        }
     }
 }
