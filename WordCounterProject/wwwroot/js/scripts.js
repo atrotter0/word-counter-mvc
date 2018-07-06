@@ -19,6 +19,7 @@ function getWordCount(word, phrase) {
     data: { word: word, phrase: phrase},
     url: '/WordCounter/Results',
     success: function(result) {
+      console.log("Success!");
       displayResult(".jumbotron");
     },
     error: function(err) {

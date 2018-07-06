@@ -11,6 +11,14 @@ namespace WordCounterProject.Models
         private int _wordCount;
         private string _error;
 
+        public WordCounter(string word, string phrase)
+        {
+            this.SetUserWord(word);
+            this.SetUserPhrase(phrase);
+        }
+
+        public WordCounter() {}
+
         public void SetUserWord(string word)
         {
             _userWord = word;
@@ -143,9 +151,15 @@ namespace WordCounterProject.Models
             }
             else
             {
-                this.DowncaseAndScrubPhrase();
-                this.FindWordMatches();
+                this.FormatAndFindMatch();
             }
+        }
+
+        public void FormatAndFindMatch()
+        {
+            this.DowncaseAndTrimWord();
+            this.DowncaseAndScrubPhrase();
+            this.FindWordMatches();
         }
 
         public bool InvalidWordOrPhrase()
