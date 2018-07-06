@@ -35,7 +35,7 @@ namespace WordCounterProject
             });
             app.Run(async (context) =>
             {
-               await context.Response.WriteAsync("An error has occurred.");
+               //await context.Response.WriteAsync("An error has occurred.");
             });
         }
     }
