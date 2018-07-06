@@ -15,3 +15,7 @@
 .form-group {
   margin: 30px auto;
 }
+
+.bold-word {
+  font-weight: bold;
+}

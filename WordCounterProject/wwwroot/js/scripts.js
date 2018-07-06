@@ -17,10 +17,10 @@ function getWordCount(word, phrase) {
   $.ajax({
     type: 'GET',
     data: { word: word, phrase: phrase},
-    url: '/WordCounter/Results',
+    url: '/word-counter/' + word + '/' + phrase + '/',
     success: function(result) {
       console.log("Success!");
-      displayResult(".jumbotron");
+      displayResult('.jumbotron', '.container', result);
     },
     error: function(err) {
       console.log("Error, not working: " + JSON.stringify(err));
@@ -28,12 +28,13 @@ function getWordCount(word, phrase) {
   });
 }
 
-function displayResult(element) {
-  $(element).append(result);
+function displayResult(removeElement, appendTo, result) {
+  $(removeElement).remove();
+  $(appendTo).append(result);
 }
 
 $(document).ready(function() {
-  $("#word-count").click(function(e) {
+  $("#count-word").click(function(e) {
     e.preventDefault();
 
     validateInput();
