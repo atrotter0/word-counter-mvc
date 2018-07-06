@@ -12,7 +12,7 @@ namespace WordCounterProject.Tests
         public void GetSetUserWord_GetsSetsUserWord_String()
         {
             WordCounter newCounter = new WordCounter();
-            newCounter.SetUserWord("  DOG  ");
+            newCounter.SetUserWord("dog");
             Assert.AreEqual("dog", newCounter.GetUserWord());
         }
 
@@ -76,7 +76,16 @@ namespace WordCounterProject.Tests
         }
 
         [TestMethod]
-        public void DowncaseAndScrubPhrase_DowncasesUserPhrase_True()
+        public void DowncaseAndTrimWord_DowncasesAndTrimsWord_String()
+        {
+            WordCounter newCounter = new WordCounter();
+            newCounter.SetUserWord("  DOG  ");
+            newCounter.DowncaseAndTrimWord();
+            Assert.AreEqual("dog", newCounter.GetUserWord());
+        }
+
+        [TestMethod]
+        public void DowncaseAndScrubPhrase_DowncasesUserPhrase_String()
         {
             WordCounter newCounter = new WordCounter();
             string phrase = "This is the end, the END my friend.";
@@ -131,6 +140,26 @@ namespace WordCounterProject.Tests
         }
 
         [TestMethod]
-        
+        public void InvalidWordOrPhrase_ChecksForSpecialCharsInWord_True()
+        {
+            WordCounter newCounter = new WordCounter();
+            newCounter.SetUserWord("elf&^");
+            Assert.AreEqual(true, newCounter.InvalidWordOrPhrase());
+        }
+
+        [TestMethod]
+        public void InvalidWordOrPhrase_ChecksForNullWord_True()
+        {
+            WordCounter newCounter = new WordCounter();
+            newCounter.SetUserWord(null);
+            Assert.AreEqual(true, newCounter.InvalidWordOrPhrase());
+        }
+
+        // [TestMethod]
+        // public void GetSetError_GetsSetsError_True()
+        // {
+        //     WordCounter newCounter = new WordCounter();
+        //     newCounter.SetUserWord("");
+        // }
     }
 }

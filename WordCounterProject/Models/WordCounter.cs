@@ -13,7 +13,7 @@ namespace WordCounterProject.Models
 
         public void SetUserWord(string word)
         {
-            _userWord = word.ToLower().Trim();
+            _userWord = word;
         }
 
         public string GetUserWord()
@@ -75,6 +75,12 @@ namespace WordCounterProject.Models
             return true;
         }
 
+        public void DowncaseAndTrimWord()
+        {
+            string trimmedAndLowered = this.GetUserWord().ToLower().Trim();
+            this.SetUserWord(trimmedAndLowered);
+        }
+
         public void DowncaseAndScrubPhrase()
         {
             string[] words = this.GetUserPhrase().Split(' ');
@@ -131,7 +137,7 @@ namespace WordCounterProject.Models
 
         public void RunWordCount()
         {
-            if (this.IsValidWord(this.GetUserWord()) || this.IsNullWord(this.GetUserWord()))
+            if (InvalidWordOrPhrase())
             {
                 this.SetError("Invalid word. Please enter a new word and try again.");
             }
@@ -140,6 +146,11 @@ namespace WordCounterProject.Models
                 this.DowncaseAndScrubPhrase();
                 this.FindWordMatches();
             }
+        }
+
+        public bool InvalidWordOrPhrase()
+        {
+            return this.IsNullWord(this.GetUserWord()) || this.IsNullWord(this.GetUserPhrase());
         }
     }
 }
