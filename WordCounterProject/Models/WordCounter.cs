@@ -137,7 +137,7 @@ namespace WordCounterProject.Models
 
         public void RunWordCount()
         {
-            if (InvalidWordOrPhrase())
+            if (this.InvalidWordOrPhrase())
             {
                 this.SetError("Invalid word. Please enter a new word and try again.");
             }
@@ -150,7 +150,15 @@ namespace WordCounterProject.Models
 
         public bool InvalidWordOrPhrase()
         {
-            return this.IsNullWord(this.GetUserWord()) || this.IsNullWord(this.GetUserPhrase());
+            if (this.IsNullWord(this.GetUserWord()) || this.IsNullWord(this.GetUserPhrase()))
+            {
+                return true;
+            }
+            else if (!this.IsValidWord(this.GetUserWord()))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

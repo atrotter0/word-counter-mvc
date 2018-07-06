@@ -34,6 +34,14 @@ namespace WordCounterProject.Tests
         }
 
         [TestMethod]
+        public void GetSetError_GetsSetsError_True()
+        {
+            WordCounter newCounter = new WordCounter();
+            newCounter.SetError("This is an error message");
+            Assert.AreEqual("This is an error message", newCounter.GetError());
+        }
+
+        [TestMethod]
         public void GetIncrementWordCount_GetsAndIncrementsWordCount_Int()
         {
             WordCounter newCounter = new WordCounter();
@@ -143,7 +151,9 @@ namespace WordCounterProject.Tests
         public void InvalidWordOrPhrase_ChecksForSpecialCharsInWord_True()
         {
             WordCounter newCounter = new WordCounter();
-            newCounter.SetUserWord("elf&^");
+            newCounter.SetUserWord("elf^&");
+            newCounter.SetUserPhrase("I'm Ron Burgandy?");
+            Console.WriteLine(newCounter.GetUserWord());
             Assert.AreEqual(true, newCounter.InvalidWordOrPhrase());
         }
 
@@ -152,14 +162,17 @@ namespace WordCounterProject.Tests
         {
             WordCounter newCounter = new WordCounter();
             newCounter.SetUserWord(null);
+            newCounter.SetUserPhrase("I'm Ron Burgandy?");
             Assert.AreEqual(true, newCounter.InvalidWordOrPhrase());
         }
 
-        // [TestMethod]
-        // public void GetSetError_GetsSetsError_True()
-        // {
-        //     WordCounter newCounter = new WordCounter();
-        //     newCounter.SetUserWord("");
-        // }
+        [TestMethod]
+        public void InvalidWordOrPhrase_ChecksForNullPhrase_True()
+        {
+            WordCounter newCounter = new WordCounter();
+            newCounter.SetUserWord("elf");
+            newCounter.SetUserPhrase(null);
+            Assert.AreEqual(true, newCounter.InvalidWordOrPhrase());
+        }
     }
 }
