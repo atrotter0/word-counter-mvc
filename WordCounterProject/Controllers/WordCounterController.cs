@@ -19,5 +19,13 @@ namespace WordCounterProject.Controllers
             wordCount.RunWordCount();
             return View("Results", wordCount);
         }
+
+        [HttpPost("/word-counter/{word}/{phrase}")]
+        public ActionResult PostResults(string word, string phrase)
+        {
+            WordCounter wordCount = new WordCounter(word, phrase);
+            wordCount.RunWordCount();
+            return View("Results", wordCount);
+        }
     }
 }

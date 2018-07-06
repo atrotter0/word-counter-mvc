@@ -52,7 +52,7 @@ function enableBtn(element) {
 
 function getWordCount(word, phrase) {
   $.ajax({
-    type: 'GET',
+    type: 'POST',
     data: { word: word, phrase: phrase},
     url: '/word-counter/' + word + '/' + phrase + '/',
     success: function(result) {
