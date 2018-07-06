@@ -9,6 +9,7 @@ namespace WordCounterProject.Models
         private string _userPhrase;
         private string _scrubbedPhrase;
         private int _wordCount;
+        private string _error;
 
         public void SetUserWord(string word)
         {
@@ -116,6 +117,29 @@ namespace WordCounterProject.Models
         public void IncrementIfWordMatch(string word)
         {
             if (this.GetUserWord() == word) this.IncrementWordCount();
+        }
+
+        public void SetError(string error)
+        {
+            _error = error;
+        }
+
+        public string GetError()
+        {
+            return _error;
+        }
+
+        public void RunWordCount()
+        {
+            if (this.isValid(this.GetUserWord()) || this.IsNullWord(this.GetUserWord())
+            {
+                this.SetError("Invalid word. Please enter a new word and try again.");
+            }
+            else
+            {
+                this.DowncaseAndScrubPhrase();
+                this.FindWordMatches();
+            }
         }
     }
 }

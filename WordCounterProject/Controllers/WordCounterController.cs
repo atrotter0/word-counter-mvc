@@ -10,5 +10,12 @@ namespace WordCounterProject.Controllers
         {
             return View();
         }
+
+        public ActionResult Results(string word, string phrase)
+        {
+            WordCounter word = new WordCounter();
+            word.RunWordCount();
+            return View(word);
+        }
     }
 }

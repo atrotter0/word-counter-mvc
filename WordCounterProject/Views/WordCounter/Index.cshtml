@@ -5,17 +5,17 @@
   <div class='container'>
     <div class='jumbotron'>
       <p>Enter a word and a phrase in the fields below. Click 'Count' to count how many times that word appears in the given phrase.</p>
-      <form>
+      <form id='word-count'>
         <div class='error-message'></div>
         <div class='form-group'>
           <label for='word'>Enter a word:</label>
-          <input type='text' name='word' class='form-control'>
+          <input type='text' name='word' id='word-input' class='form-control'>
         </div>
         <div class='form-group'>
           <label for='phrase'>Enter a phrase:</label>
-          <input type='text' name='phrase' class='form-control'>
+          <input type='text' name='phrase' id='phrase-input' class='form-control'>
         </div>
-        <button type='submit' class='btn btn-default btn-lg'>Count!</button>
+        <button type='submit' id='count-word' class='btn btn-default btn-lg'>Count!</button>
       </form>
     </div>
   </div>
