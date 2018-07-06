@@ -174,5 +174,21 @@ namespace WordCounterProject.Tests
             newCounter.SetUserPhrase(null);
             Assert.AreEqual(true, newCounter.InvalidWordOrPhrase());
         }
+
+        [TestMethod]
+        public void RunWordCount_RunsWordCountWithValidInput_Int()
+        {
+            WordCounter newCounter = new WordCounter("Bob", "The man was nice, Bob.");
+            newCounter.RunWordCount();
+            Assert.AreEqual(1, newCounter.GetWordCount());
+        }
+
+        [TestMethod]
+        public void RunWordCount_DoesNotRunWordCountWithInvalidInput_True()
+        {
+            WordCounter newCounter = new WordCounter("Bob^&", null);
+            newCounter.RunWordCount();
+            Assert.AreEqual(0, newCounter.GetWordCount());
+        }
     }
 }
