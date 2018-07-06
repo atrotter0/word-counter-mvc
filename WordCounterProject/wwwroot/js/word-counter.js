@@ -91,6 +91,7 @@ $(document).ready(function() {
   $('#count-word').click(function(e) {
     e.preventDefault();
 
+    removeResults();
     var userWord = $('#word-input').val();
     var userPhrase = $('#phrase-input').val();
     getWordCount(userWord, userPhrase);
