@@ -13,9 +13,11 @@ namespace WordCounterProject.Controllers
 
         public ActionResult Results(string word, string phrase)
         {
-            WordCounter word = new WordCounter();
-            word.RunWordCount();
-            return View(word);
+            WordCounter newWord = new WordCounter();
+            newWord.SetUserWord(word);
+            newWord.SetUserPhrase(phrase);
+            newWord.RunWordCount();
+            return View(newWord);
         }
     }
 }

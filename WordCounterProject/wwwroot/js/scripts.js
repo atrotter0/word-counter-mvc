@@ -1,6 +1,16 @@
 function validateInput() {
-  // use regex to parse input
-  getWordCount(userWord, userPhrase);
+  var userWord = $("#word-input").val();
+  var userPhrase = $("#phrase-input").val();
+
+  if (userWord !== "" && userPhrase !== "") {
+    getWordCount(userWord, userPhrase);
+  } else {
+    displayError();
+  }
+}
+
+function displayError() {
+  $(".error-message").css("visibility", "visible").text("Invalid input");
 }
 
 function getWordCount(word, phrase) {
@@ -25,8 +35,6 @@ $(document).ready(function() {
   $("#word-count").click(function(e) {
     e.preventDefault();
 
-    var userWord = $("#word-input").val();
-    var userPhrase = $("#phrase-input").val();
     validateInput();
   });
 });

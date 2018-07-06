@@ -129,5 +129,8 @@ namespace WordCounterProject.Tests
             newCounter.IncrementIfWordMatch(word);
             Assert.AreEqual(1, newCounter.GetWordCount());
         }
+
+        [TestMethod]
+        
     }
 }
