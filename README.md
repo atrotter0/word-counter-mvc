@@ -1,4 +1,4 @@
-# WordCounter MVC
+# Word Count
 
 #### Epicodus C# Independent Project, 07.06.18
 
