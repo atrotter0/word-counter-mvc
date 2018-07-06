@@ -20,13 +20,5 @@ namespace WordCounterProject.Controllers
             Console.WriteLine(wordCount.GetWordCount());
             return View("Results", wordCount);
         }
-
-        // public ActionResult Results(string word, string phrase)
-        // {
-        //     WordCounter wordCount = new WordCounter(word, phrase);
-        //     wordCount.RunWordCount();
-        //     Console.WriteLine(wordCount.GetWordCount());
-        //     return View(wordCount);
-        // }
     }
 }
