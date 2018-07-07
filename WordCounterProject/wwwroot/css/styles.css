@@ -4,10 +4,12 @@
   border-radius: 10px;
   box-shadow: 5px 5px 10px #444;
   width: 80%;
+  max-width: 816px;
 }
 
-.no-box-shadow {
-  box-shadow: none;
+#mail-icon {
+  display: block;
+  margin: 40px auto;
 }
 
 .error-display {
@@ -15,6 +17,7 @@
   color: red;
   margin: 10px auto;
   height: 30px;
+  padding-top: 10px;
 }
 
 .form-group {
@@ -26,7 +29,7 @@
 }
 
 #count-word {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .bold-word {

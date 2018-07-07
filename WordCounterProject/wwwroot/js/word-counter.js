@@ -54,7 +54,7 @@ function enableBtn(element) {
   $(element).removeAttr('disabled').css('border', '1px solid #00000061');
 }
 
-function checkValidation() {
+function runValidation() {
   if (flagValues()) {
     runWordCount();
   } else {
@@ -117,6 +117,6 @@ $(document).ready(function() {
   $('#count-word').click(function(e) {
     e.preventDefault();
 
-    checkValidation();
+    runValidation();
   });
 });
