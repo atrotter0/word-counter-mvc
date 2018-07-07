@@ -33,7 +33,7 @@
   font-weight: bold;
 }
 
-.results {
+.results, .validation-error {
   margin-top: 30px;
 }
 

@@ -58,8 +58,12 @@ function checkValidation() {
   if (flagValues()) {
     runWordCount();
   } else {
-    alert("Stop trying to break things...");
+    displayError();
   }
+}
+
+function displayError() {
+  displayMatches("<div class='well validation-error'><p>Stop trying to break things...</p></div>");
 }
 
 function runWordCount() {
@@ -69,6 +73,8 @@ function runWordCount() {
 }
 
 function getWordCount(word, phrase) {
+  if (word == "" || phrase == "") return displayError();
+
   $.ajax({
     type: 'POST',
     data: { word: word, phrase: phrase},
@@ -83,10 +89,12 @@ function getWordCount(word, phrase) {
 }
 
 function displayMatches(result) {
+  removeResults();
   $('.jumbotron').append(result);
 }
 
 function removeResults() {
+  $('.validation-error').remove();
   $('.results').remove();
 }
 
@@ -109,7 +117,6 @@ $(document).ready(function() {
   $('#count-word').click(function(e) {
     e.preventDefault();
 
-    removeResults();
     checkValidation();
   });
 });
