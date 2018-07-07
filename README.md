@@ -47,6 +47,7 @@ A .NET web app that allows a user to enter a word and a phrase. The phrase will 
 ## Links
 
 * [Github Repo] (https://github.com/atrotter0/word-counter-mvc)
+* [Heroku App] (https://wordcount-mvc.herokuapp.com/)
 
 ## License
 
