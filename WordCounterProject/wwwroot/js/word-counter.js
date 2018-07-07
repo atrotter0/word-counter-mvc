@@ -35,11 +35,15 @@ function emptyInput(element) {
 }
 
 function checkInputFlags() {
-  if (notBlank && fieldsValid) {
+  if (flagValues()) {
     enableBtn('#count-word');
   } else {
     disableBtn('#count-word');
   }
+}
+
+function flagValues() {
+  return (notBlank && fieldsValid);
 }
 
 function disableBtn(element) {
@@ -48,6 +52,20 @@ function disableBtn(element) {
 
 function enableBtn(element) {
   $(element).removeAttr('disabled').css('border', '1px solid #00000061');
+}
+
+function checkValidation() {
+  if (flagValues()) {
+    runWordCount();
+  } else {
+    alert("Stop trying to break things...");
+  }
+}
+
+function runWordCount() {
+  var userWord = $('#word-input').val();
+  var userPhrase = $('#phrase-input').val();
+  getWordCount(userWord, userPhrase);
 }
 
 function getWordCount(word, phrase) {
@@ -92,8 +110,6 @@ $(document).ready(function() {
     e.preventDefault();
 
     removeResults();
-    var userWord = $('#word-input').val();
-    var userPhrase = $('#phrase-input').val();
-    getWordCount(userWord, userPhrase);
+    checkValidation();
   });
 });
