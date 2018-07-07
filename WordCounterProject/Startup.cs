@@ -35,7 +35,7 @@ namespace WordCounterProject
             });
             app.Run(async (context) =>
             {
-               //await context.Response.WriteAsync("An error has occurred.");
+               await context.Response.WriteAsync("<div class='well results'><p>Invalid input or path. Please try again.<p></div>");
             });
         }
     }

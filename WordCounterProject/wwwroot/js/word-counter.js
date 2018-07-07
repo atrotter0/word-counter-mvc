@@ -89,11 +89,11 @@ function getWordCount(word, phrase) {
 }
 
 function displayMatches(result) {
-  removeResults();
+  removeResultsAndError();
   $('.jumbotron').append(result);
 }
 
-function removeResults() {
+function removeResultsAndError() {
   $('.validation-error').remove();
   $('.results').remove();
 }
@@ -102,14 +102,14 @@ $(document).ready(function() {
   disableBtn('#count-word');
 
   $('#word-input').keyup(function() {
-    removeResults();
+    removeResultsAndError();
     onlyLetters(this);
     checkFormFields();
     checkInputFlags();
   });
 
   $('#phrase-input').keyup(function() {
-    removeResults();
+    removeResultsAndError();
     checkFormFields();
     checkInputFlags();
   });
