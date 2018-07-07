@@ -3,6 +3,7 @@
   margin: 40px auto;
   border-radius: 10px;
   box-shadow: 5px 5px 10px #444;
+  width: 80%;
 }
 
 .no-box-shadow {
@@ -34,4 +35,11 @@
 
 .results {
   margin-top: 30px;
+}
+
+/* responsive styles */
+@media screen and (max-width: 600px) {
+  .hero-image {
+    width: 100%;
+  }
 }
