@@ -12,6 +12,14 @@
   margin: 40px auto;
 }
 
+#loading-gif {
+  display: none;
+}
+
+#loading-gif img {
+  width: 100px;
+}
+
 .error-display {
   visibility: hidden;
   color: red;

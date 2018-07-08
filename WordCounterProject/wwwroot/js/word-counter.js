@@ -61,6 +61,8 @@ function displayError() {
 function runWordCount() {
   var userWord = $('#word-input').val();
   var userPhrase = $('#phrase-input').val();
+  hideElement("#count-word");
+  showElement("#loading-gif");
   getWordCount(userWord, userPhrase);
 }
 
@@ -72,12 +74,22 @@ function getWordCount(word, phrase) {
     data: { word: word, phrase: phrase},
     url: '/word-counter/' + word + '/' + phrase + '/',
     success: function(result) {
+      hideElement("#loading-gif");
+      showElement("#count-word");
       displayMatches(result);
     },
     error: function(err) {
       console.log("Error: " + JSON.stringify(err));
     }
   });
+}
+
+function hideElement(id) {
+  $(id).hide();
+}
+
+function showElement(id) {
+  $(id).show();
 }
 
 function displayMatches(result) {
