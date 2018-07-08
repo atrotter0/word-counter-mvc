@@ -35,11 +35,7 @@ function emptyInput(element) {
 }
 
 function checkInputFlags() {
-  if (flagValues()) {
-    enableBtn('#count-word');
-  } else {
-    disableBtn('#count-word');
-  }
+  (flagValues()) ? enableBtn('#count-word') : disableBtn('#count-word');
 }
 
 function flagValues() {
@@ -55,11 +51,7 @@ function enableBtn(element) {
 }
 
 function runValidation() {
-  if (flagValues()) {
-    runWordCount();
-  } else {
-    displayError();
-  }
+  (flagValues()) ? runWordCount() : displayError();
 }
 
 function displayError() {
@@ -93,6 +85,10 @@ function displayMatches(result) {
   $('.jumbotron').append(result);
 }
 
+function enterKeyPressed(event) {
+  return event.keyCode == 13;
+}
+
 function removeResultsAndError() {
   $('.validation-error').remove();
   $('.results').remove();
@@ -101,14 +97,18 @@ function removeResultsAndError() {
 $(document).ready(function() {
   disableBtn('#count-word');
 
-  $('#word-input').keyup(function() {
+  $('#word-input').keyup(function(e) {
+    if (enterKeyPressed(e)) return;
+
     removeResultsAndError();
     onlyLetters(this);
     checkFormFields();
     checkInputFlags();
   });
 
-  $('#phrase-input').keyup(function() {
+  $('#phrase-input').keyup(function(e) {
+    if (enterKeyPressed(e)) return;
+
     removeResultsAndError();
     checkFormFields();
     checkInputFlags();
