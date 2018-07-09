@@ -55,6 +55,8 @@ function runValidation() {
 }
 
 function displayError() {
+  hideElement("#loading-gif");
+  showElement("#count-word");
   displayMatches("<div class='well validation-error'><p>Stop trying to break things...</p></div>");
 }
 
