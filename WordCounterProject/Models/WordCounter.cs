@@ -166,13 +166,6 @@ namespace WordCounterProject.Models
             }
         }
 
-        public void FormatAndFindMatch()
-        {
-            this.DowncaseAndTrimWord();
-            this.DowncaseAndScrubPhrase();
-            this.FindWordMatches();
-        }
-
         public bool InvalidWordOrPhrase()
         {
             if (this.IsNullWord(this.GetUserWord()) || this.IsNullWord(this.GetUserPhrase()))
@@ -184,6 +177,13 @@ namespace WordCounterProject.Models
                 return true;
             }
             return false;
+        }
+
+        public void FormatAndFindMatch()
+        {
+            this.DowncaseAndTrimWord();
+            this.DowncaseAndScrubPhrase();
+            this.FindWordMatches();
         }
     }
 }

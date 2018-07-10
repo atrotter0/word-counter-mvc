@@ -35,11 +35,7 @@ function emptyInput(element) {
 }
 
 function checkInputFlags() {
-  if (flagValues()) {
-    enableBtn('#count-word');
-  } else {
-    disableBtn('#count-word');
-  }
+  (flagValues()) ? enableBtn('#count-word') : disableBtn('#count-word');
 }
 
 function flagValues() {
@@ -54,26 +50,34 @@ function enableBtn(element) {
   $(element).removeAttr('disabled').css('border', '1px solid #00000061');
 }
 
-function checkValidation() {
-  if (flagValues()) {
-    runWordCount();
-  } else {
-    alert("Stop trying to break things...");
-  }
+function runValidation() {
+  (flagValues()) ? runWordCount() : displayError();
+}
+
+function displayError() {
+  hideElement("#loading-gif");
+  showElement("#count-word");
+  displayMatches("<div class='well validation-error'><p>Stop trying to break things...</p></div>");
 }
 
 function runWordCount() {
   var userWord = $('#word-input').val();
   var userPhrase = $('#phrase-input').val();
+  hideElement("#count-word");
+  showElement("#loading-gif");
   getWordCount(userWord, userPhrase);
 }
 
 function getWordCount(word, phrase) {
+  if (word == "" || phrase == "") return displayError();
+
   $.ajax({
     type: 'POST',
     data: { word: word, phrase: phrase},
     url: '/word-counter/' + word + '/' + phrase + '/',
     success: function(result) {
+      hideElement("#loading-gif");
+      showElement("#count-word");
       displayMatches(result);
     },
     error: function(err) {
@@ -82,26 +86,44 @@ function getWordCount(word, phrase) {
   });
 }
 
+function hideElement(id) {
+  $(id).hide();
+}
+
+function showElement(id) {
+  $(id).show();
+}
+
 function displayMatches(result) {
+  removeResultsAndError();
   $('.jumbotron').append(result);
 }
 
-function removeResults() {
+function enterKeyPressed(event) {
+  return event.keyCode == 13;
+}
+
+function removeResultsAndError() {
+  $('.validation-error').remove();
   $('.results').remove();
 }
 
 $(document).ready(function() {
   disableBtn('#count-word');
 
-  $('#word-input').keyup(function() {
-    removeResults();
+  $('#word-input').keyup(function(e) {
+    if (enterKeyPressed(e)) return;
+
+    removeResultsAndError();
     onlyLetters(this);
     checkFormFields();
     checkInputFlags();
   });
 
-  $('#phrase-input').keyup(function() {
-    removeResults();
+  $('#phrase-input').keyup(function(e) {
+    if (enterKeyPressed(e)) return;
+
+    removeResultsAndError();
     checkFormFields();
     checkInputFlags();
   });
@@ -109,7 +131,6 @@ $(document).ready(function() {
   $('#count-word').click(function(e) {
     e.preventDefault();
 
-    removeResults();
-    checkValidation();
+    runValidation();
   });
 });
